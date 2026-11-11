@@ -1,34 +1,34 @@
 name: CI
 on:
-    push:
+  push:
 permissions:
-    contents: read
+  contents: read
 jobs:
-    lint:
-        name: Lint
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v7
-            - uses: actions/setup-node@v7
-              with:
-                  node-version-file: .nvmrc
-                  cache: npm
-            - run: npm ci
-            - name: Oxlint
-              run: npm run lint
-            - name: Prettier
-              run: npm run format:check
-            - name: Type check
-              run: npm run typecheck
-    test:
-        name: Test
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v7
-            - uses: actions/setup-node@v7
-              with:
-                  node-version-file: .nvmrc
-                  cache: npm
-            - run: npm ci
-            - name: Vitest
-              run: npm test -- --run
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Oxlint
+        run: npm run lint
+      - name: Prettier
+        run: npm run format:check
+      - name: Type check
+        run: npm run typecheck
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Vitest
+        run: npm test -- --run
